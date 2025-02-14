@@ -1,13 +1,15 @@
-// app > test > page.tsx
-import React from "react";
+"use client";
 
-const TestPage = () => {
-  return (
-    <div>
-      <h1>Test Page</h1>
-      <p>Hello Next</p>
-    </div>
-  );
-};
+import { useRouter } from "next/navigation";
 
-export default TestPage;
+export default function Test() {
+  const router = useRouter();
+
+  const handleButtonClick = () => {
+    setTimeout(() => {
+      router.push("/");
+    }, 1000);
+  };
+
+  return <button onClick={handleButtonClick}>클릭!</button>;
+}
