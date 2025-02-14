@@ -1,11 +1,11 @@
 type Props = {
   params: {
-    id: number;
+    postId: number;
   };
 };
 
 const PostDetailPage = ({ params }: Props) => {
-  return <>ID: {params.id} Page</>;
+  return <>ID: {params.postId} Page</>;
 };
 
 export default PostDetailPage;
