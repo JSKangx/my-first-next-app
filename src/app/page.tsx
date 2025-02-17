@@ -1,10 +1,41 @@
-import Link from "next/link";
+import NewProductList from "@/app/components/NewProductList";
+import ProductList from "@/app/components/ProductList";
+import Loading from "@/app/loading";
+import { Suspense } from "react";
 
-export default function Home() {
+export default async function Home() {
   return (
-    <div>
-      안녕하세요. Next.js 입니다.
-      <Link href={"/test"}>Test로 이동하기</Link>
+    <div className="p-8 m-4">
+      <h1>Sparta Shop</h1>
+      <Suspense fallback={<Loading />}>
+        <ProductList />
+      </Suspense>
+      <Suspense fallback={<Loading />}>
+        <NewProductList />
+      </Suspense>
     </div>
   );
+}
+
+export interface Product {
+  id: string;
+  isNew: boolean;
+  handle: string;
+  availableForSale: boolean;
+  title: string;
+  description: string;
+  descriptionHtml: string;
+  options: { name: string; values: string[] }[];
+  price: { amount: string; currencyCode: string };
+  variants: {
+    id: string;
+    title: string;
+    price: string;
+    availableForSale: boolean;
+  }[];
+  images: string;
+  featuredImage: string;
+  seo: { title: string; description: string };
+  tags: string[];
+  updatedAt: string;
 }
