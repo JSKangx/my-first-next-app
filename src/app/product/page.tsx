@@ -1,4 +1,4 @@
-import ProductList from "@/app/components/ProductList";
+import ProductList from "@/components/ProductList";
 
 const TestPage = () => {
   return (

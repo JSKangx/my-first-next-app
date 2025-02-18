@@ -1,5 +1,5 @@
-import NewProductList from "@/app/components/NewProductList";
-import ProductList from "@/app/components/ProductList";
+import NewProductList from "@/components/NewProductList";
+import ProductList from "@/components/ProductList";
 import Loading from "@/app/loading";
 import { Suspense } from "react";
 

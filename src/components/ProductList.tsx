@@ -1,8 +1,9 @@
-// "use client";
+"use client";
 
 import { Product } from "@/app/page";
+import { getProduct } from "@/server-action";
 import Image from "next/image";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // const fetchData = async () => {
 //   const res = await fetch("http://localhost:4000/products");
@@ -11,25 +12,22 @@ import Image from "next/image";
 //   return data;
 // };
 
-export default async function ProductList() {
+export default function ProductList() {
   // SSR
-  const res = await fetch("http://localhost:4000/products", {
-    cache: "no-cache",
-  });
-  const data: Product[] = await res.json();
+  // const { data } = await getProduct();
 
   // CSR
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [data, setData] = useState<Product[]>([]);
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   fetchData().then((data) => {
-  //     setData(data);
-  //     setIsLoading(false);
-  //   });
-  // }, []);
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState<Product[]>([]);
+  useEffect(() => {
+    setIsLoading(true);
+    getProduct().then(({ data }) => {
+      setData(data);
+      setIsLoading(false);
+    });
+  }, []);
 
-  // if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="p-8 m-4">
