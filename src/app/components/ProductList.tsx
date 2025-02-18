@@ -1,6 +1,7 @@
 // "use client";
 
 import { Product } from "@/app/page";
+import Image from "next/image";
 // import { useEffect, useState } from "react";
 
 // const fetchData = async () => {
@@ -34,7 +35,7 @@ export default async function ProductList() {
     <div className="p-8 m-4">
       {data.map((product) => (
         <div className="flex border p-4 gap-4 rounded-md" key={product.id}>
-          <img
+          <Image
             className="rounded-smr"
             width={150}
             height={150}
