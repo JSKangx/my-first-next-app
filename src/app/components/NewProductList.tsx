@@ -1,5 +1,6 @@
 import { Product } from "@/app/page";
 import Image from "next/image";
+import Link from "next/link";
 
 const NewProductList = async () => {
   const res = await fetch("http://localhost:4000/products", {
@@ -11,26 +12,27 @@ const NewProductList = async () => {
   return (
     <div className="flex gap-2 oveflow-auto w-full">
       <div className="w-max flex gap-2">
-        {newData.map((product) => (
-          <div
-            className="flex gap-2 w-[250px] border rounded-sm"
-            key={product.id}
-          >
-            <Image
-              className="rounded-sm object-scale-down"
-              width={80}
-              height={80}
-              src={product.images}
-              alt={product.title}
-            />
-            <div className="flex flex-col justify-between">
-              <div>
-                <h2 className="text-md font-medium">{product.title}</h2>
-                <p className="mt-4 font-thin">{product.price.amount}$</p>
+        {newData.map((product) => {
+          return (
+            <Link href={`/product/${product.id}`} key={product.id}>
+              <div className="flex gap-2 w-[250px] border rounded-sm">
+                <Image
+                  className="rounded-sm object-scale-down"
+                  width={80}
+                  height={80}
+                  src={product.images}
+                  alt={product.title}
+                />
+                <div className="flex flex-col justify-between">
+                  <div>
+                    <h2 className="text-md font-medium">{product.title}</h2>
+                    <p className="mt-4 font-thin">{product.price.amount}$</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

@@ -8,10 +8,10 @@ export default async function Home() {
     <div className="p-8 m-4">
       <h1>Sparta Shop</h1>
       <Suspense fallback={<Loading />}>
-        <ProductList />
+        <NewProductList />
       </Suspense>
       <Suspense fallback={<Loading />}>
-        <NewProductList />
+        <ProductList />
       </Suspense>
     </div>
   );
